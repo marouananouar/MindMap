@@ -11,8 +11,58 @@ document.addEventListener('DOMContentLoaded', () => {
     const resourcesDropdown = document.getElementById('resources');
     const signature = document.querySelector('.signature');
     const userLocation = document.querySelector('.user-info span:first-child');
+	 const locationInfo = document.getElementById('location-info');
     const currentTime = document.getElementById('current-time');
     const currentDate = document.getElementById('current-date');
+	
+	// Function to get user's location
+    function getUserLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(position => {
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+
+                // Reverse geocoding to get location details
+                fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const city = data.city;
+                        const region = data.principalSubdivision;
+                        const country = data.countryName;
+
+                        // Update location info
+                        locationInfo.textContent = `Location: ${city}, ${region}, ${country}`;
+                    })
+                    .catch(error => {
+                        console.error('Error fetching location:', error);
+                        locationInfo.textContent = 'Location: Unknown';
+                    });
+            }, error => {
+                console.error('Error getting geolocation:', error);
+                locationInfo.textContent = 'Location: Unknown';
+            });
+        } else {
+            locationInfo.textContent = 'Location: Geolocation not supported';
+        }
+    }
+
+    // Set initial user location
+    getUserLocation();
+
+    // Function to update live time and date
+    function updateTimeAndDate() {
+        const now = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true };
+        const formattedDate = now.toLocaleDateString('en-US', options);
+        currentDate.textContent = formattedDate;
+    }
+
+    // Update time and date initially
+    updateTimeAndDate();
+
+    // Update time and date every second
+    setInterval(updateTimeAndDate, 1000);
+
 
     // Set user's location (replace with actual user location if known)
     userLocation.textContent = 'Location: Your Location'; // Replace with actual location
