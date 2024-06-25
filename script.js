@@ -1,205 +1,193 @@
-// script.js
+const width = 1000;
+const d3 = window.d3;
 
-document.addEventListener('DOMContentLoaded', () => {
-    const canvas = document.getElementById('mind-map-canvas');
-    const ctx = canvas.getContext('2d');
-    const popup = document.getElementById('popup');
-    const popupTitle = document.getElementById('popup-title');
-    const popupInfo = document.getElementById('popup-info');
-    const popupLink = document.getElementById('popup-link');
-    const closeBtn = document.querySelector('.close-btn');
-    const resourcesDropdown = document.getElementById('resources');
-    const signature = document.querySelector('.signature');
-    const userLocation = document.querySelector('.user-info span:first-child');
-	 const locationInfo = document.getElementById('location-info');
-    const currentTime = document.getElementById('current-time');
-    const currentDate = document.getElementById('current-date');
-	
-	// Function to get user's location
-    function getUserLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(position => {
-                const latitude = position.coords.latitude;
-                const longitude = position.coords.longitude;
+const margin = ({top: 40, right: 40, bottom: 40, left: 40});
+const dx = 40;
+const dy = width / 6;
+const tree = d3.tree().nodeSize([dx, dy]);
+const diagonal = d3.linkHorizontal().x(d => d.y).y(d => d.x);
 
-                // Reverse geocoding to get location details
-                fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`)
-                    .then(response => response.json())
-                    .then(data => {
-                        const city = data.city;
-                        const region = data.principalSubdivision;
-                        const country = data.countryName;
+const createChart = (data) => {
+  const root = d3.hierarchy(data);
 
-                        // Update location info
-                        locationInfo.textContent = `Location: ${city}, ${region}, ${country}`;
-                    })
-                    .catch(error => {
-                        console.error('Error fetching location:', error);
-                        locationInfo.textContent = 'Location: Unknown';
-                    });
-            }, error => {
-                console.error('Error getting geolocation:', error);
-                locationInfo.textContent = 'Location: Unknown';
-            });
-        } else {
-            locationInfo.textContent = 'Location: Geolocation not supported';
-        }
-    }
+  root.x0 = dy / 2;
+  root.y0 = 0;
+  root.descendants().forEach((d, i) => {
+    d.id = i;
+    d._children = d.children;
+    if (d.depth > 5) d.children = null;
+  });
 
-    // Set initial user location
-    getUserLocation();
+  const svg = d3.create("svg")
+      .attr("viewBox", [-margin.left, -margin.top, width - margin.left, dx])
+      .style("font", "10px sans-serif")
+      .style("user-select", "none");
 
-    // Function to update live time and date
-    function updateTimeAndDate() {
-        const now = new Date();
-        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true };
-        const formattedDate = now.toLocaleDateString('en-US', options);
-        currentDate.textContent = formattedDate;
-    }
+  const gLink = svg.append("g")
+      .attr("fill", "none")
+      .attr("stroke", "#999")
+      .attr("stroke-opacity", 1.0)
+      .attr("stroke-width", 1.5);
 
-    // Update time and date initially
-    updateTimeAndDate();
+  const gNode = svg.append("g")
+      .attr("cursor", "pointer")
+      .attr("pointer-events", "all");
 
-    // Update time and date every second
-    setInterval(updateTimeAndDate, 1000);
+  function update(source) {
+    const duration = d3.event && d3.event.altKey ? 2500 : 250;
+    const nodes = root.descendants().reverse();
+    const links = root.links();
 
+    // Compute the new tree layout.
+    tree(root);
 
-    // Set user's location (replace with actual user location if known)
-    userLocation.textContent = 'Location: Your Location'; // Replace with actual location
+    let left = root;
+    let right = root;
+    root.eachBefore(node => {
+      if (node.x < left.x) left = node;
+      if (node.x > right.x) right = node;
+    });
 
-    // Function to update live time and date
-    function updateTimeAndDate() {
-        const now = new Date();
-        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true };
-        const formattedDate = now.toLocaleDateString('en-US', options);
-        currentDate.textContent = formattedDate;
-    }
+    const height = right.x - left.x + margin.top + margin.bottom;
 
-    // Update time and date initially
-    updateTimeAndDate();
+    const transition = svg.transition()
+        .duration(duration)
+        .attr("viewBox", [-margin.left, left.x - margin.top, width, height])
+        .tween("resize", window.ResizeObserver ? null : () => () => svg.dispatch("toggle"));
 
-    // Update time and date every second
-    setInterval(updateTimeAndDate, 1000);
+    // Update the nodes…
+    const node = gNode.selectAll("g")
+      .data(nodes, d => d.id);
 
-    canvas.width = window.innerWidth * 0.9;
-    canvas.height = window.innerHeight * 2; // Adjust the height to ensure the content fits
-
-    const nodes = [
-        { id: 0, x: canvas.width / 2, y: 100, text: "Start", info: "This roadmap covers essential topics from networking basics to certifications, designed to guide you from beginner to advanced cybersecurity skills." },
-        { id: 1, x: canvas.width / 2, y: 200, text: "Networking Basics", info: "Learn about TCP/IP, DNS, and HTTP.", link: "https://www.cloudflare.com/learning/network-layer/what-is-tcp-ip/" },
-        { id: 2, x: canvas.width / 4, y: 300, text: "Linux Basics", info: "Learn basic Linux commands.", link: "https://www.tutorialspoint.com/unix/index.htm" },
-        { id: 3, x: canvas.width * 3 / 4, y: 300, text: "Programming", info: "Learn Python, a popular language for cybersecurity.", link: "https://www.learnpython.org/" },
-        { id: 4, x: canvas.width / 2, y: 400, text: "Web Security", info: "Learn about web vulnerabilities like XSS and SQL Injection.", link: "https://owasp.org/www-project-top-ten/" },
-        { id: 5, x: canvas.width / 4, y: 500, text: "Ethical Hacking", info: "Learn about penetration testing.", link: "https://www.hackthebox.eu/" },
-        { id: 6, x: canvas.width * 3 / 4, y: 500, text: "Security Tools", info: "Learn to use tools like Wireshark and Metasploit.", link: "https://www.wireshark.org/" },
-        { id: 7, x: canvas.width / 2, y: 600, text: "Certifications", info: "Consider certifications like CEH, CISSP.", link: "https://www.isc2.org/Certifications/CISSP" },
-        { id: 8, x: canvas.width / 4, y: 700, text: "Incident Response", info: "Learn how to respond to security incidents.", link: "https://www.sans.org/cyber-security-courses/incident-handling-incident-response/" },
-        { id: 9, x: canvas.width * 3 / 4, y: 700, text: "Cryptography", info: "Learn about encryption and cryptographic algorithms.", link: "https://www.khanacademy.org/computing/computer-science/cryptography" },
-        { id: 10, x: canvas.width / 2, y: 800, text: "Bug Bounty Programs", info: "Participate in bug bounty programs to find and report vulnerabilities.", link: "https://www.hackerone.com/" },
-        { id: 11, x: canvas.width / 4, y: 900, text: "Penetration Testing", info: "Learn and practice penetration testing techniques.", link: "https://www.offensive-security.com/metasploit-unleashed/" },
-        { id: 12, x: canvas.width * 3 / 4, y: 900, text: "Ethical Hacking", info: "Explore ethical hacking methodologies and practices.", link: "https://www.eccouncil.org/programs/certified-ethical-hacker-ceh/" },
-        { id: 13, x: canvas.width / 4, y: 1000, text: "Networking", info: "Master networking fundamentals for cybersecurity.", link: "https://www.cisco.com/c/en/us/training-events/training-certifications.html" },
-        { id: 14, x: canvas.width * 3 / 4, y: 1000, text: "Programming", info: "Enhance programming skills relevant to cybersecurity.", link: "https://www.codingdojo.com/blog/5-programming-languages-for-cyber-security" },
-        { id: 15, x: canvas.width / 2, y: 1100, text: "Advanced Certifications", info: "Pursue advanced certifications such as CISSP.", link: "https://www.isc2.org/Certifications/CISSP" },
-        { id: 16, x: canvas.width / 4, y: 1200, text: "Further Resources", info: "Explore additional resources to deepen your cybersecurity knowledge.", link: "#" },
-    ];
-
-    const connections = [
-        { from: 0, to: 1 },
-        { from: 1, to: 2 },
-        { from: 1, to: 3 },
-        { from: 3, to: 4 },
-        { from: 4, to: 5 },
-        { from: 4, to: 6 },
-        { from: 5, to: 10 },
-        { from: 5, to: 11 },
-        { from: 5, to: 12 },
-        { from: 6, to: 7 },
-        { from: 4, to: 13 },
-        { from: 14, to: 15 },
-        { from: 16, to: 7 },
-    ];
-
-    function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        drawConnections();
-        drawNodes();
-    }
-
-    function drawNodes() {
-        ctx.font = '24px Arial';
-        ctx.textAlign = 'center';
-
-        nodes.forEach(node => {
-            ctx.beginPath();
-            ctx.arc(node.x, node.y, 30, 0, 2 * Math.PI);
-            ctx.fillStyle = '#3498db';
-            ctx.fill();
-            ctx.stroke();
-            ctx.fillStyle = '#ffffff';
-            ctx.fillText(node.text, node.x, node.y - 40);
+    // Enter any new nodes at the parent's previous position.
+    const nodeEnter = node.enter().append("g")
+        .attr("transform", d => `translate(${source.y0},${source.x0})`)
+        .attr("fill-opacity", 0)
+        .attr("stroke-opacity", 0)
+        .on("click", d => {
+          d.children = d.children ? null : d._children;
+          update(d);
         });
-    }
+    
+    const folderClosed = '\uf07b';
+    const pageIcon = '\uf0f6';
+    
+    const desat = (c) => d3.hsl(c.h, c.s, c.l + .0);
 
-    function drawConnections() {
-        connections.forEach(connection => {
-            const fromNode = nodes.find(node => node.id === connection.from);
-            const toNode = nodes.find(node => node.id === connection.to);
-            if (fromNode && toNode) {
-                ctx.beginPath();
-                ctx.moveTo(fromNode.x, fromNode.y);
-                ctx.lineTo(toNode.x, toNode.y);
-                ctx.strokeStyle = '#34495e';
-                ctx.lineWidth = 3;
-                ctx.stroke();
-            }
+    // The circle
+    nodeEnter.append("circle")
+        .attr("r", dx / 3)
+        .attr("fill", d => desat(d3.hsl(d.data['background-color'])))
+        .attr("fill-opacity", 1)
+        .attr("stroke", d => d.data['background-color'])
+        .attr("data-target", d => d.data['data-target'] ? d.data['data-target'] : null)
+        .attr("data-toggle", d => d.data['data-target'] ? 'modal' : null)
+;
+    // Icon for QA text
+    nodeEnter
+        .filter(d => d.data['data-target'])
+        .append("text")
+        .attr("x", -6)
+        .attr("y", 6)
+        .attr("font-family","FontAwesome")
+        .attr('font-size', function(d) { return '16px';} )
+        .attr('data-target', d => d.data['data-target'])
+        .attr("data-toggle", 'modal')
+        .text(pageIcon);
+        ;
+
+
+    // Transition nodes to their new position.
+    const nodeUpdate = node.merge(nodeEnter).transition(transition)
+        .attr("transform", d => `translate(${d.y},${d.x})`)
+        .attr("fill-opacity", 1)
+        .attr("stroke-opacity", 1);
+
+    
+    // Link and text of each node
+    const labels = nodeEnter
+      .append("a")
+        .attr('href', d => d.data.href)
+      .append('text')
+        .attr("dy", "0.31em")
+        .attr("y", d => d._children ? '-2em' : 0)
+        .attr("text-anchor", d => d._children ? "middle" : "start")
+        .html(d => d.data.topic)
+        .attr("x", d => d._children ? 0 : (dx / 3) + 4)
+        ;
+    window.setTimeout(() => labels.call(wrapText, 300), 0);
+    
+    // Transition exiting nodes to the parent's new position.
+    const nodeExit = node.exit().transition(transition).remove()
+        .attr("transform", d => `translate(${source.y},${source.x})`)
+        .attr("fill-opacity", 0)
+        .attr("stroke-opacity", 0);
+
+    // Update the links…
+    const link = gLink.selectAll("path")
+      .data(links, d => d.target.id);
+
+    // Enter any new links at the parent's previous position.
+    const linkEnter = link.enter().append("path")
+        .attr("d", d => {
+          const o = {x: source.x0, y: source.y0};
+          return diagonal({source: o, target: o});
         });
+
+    // Transition links to their new position.
+    link.merge(linkEnter).transition(transition)
+        .attr("d", diagonal);
+
+    // Transition exiting nodes to the parent's new position.
+    link.exit().transition(transition).remove()
+        .attr("d", d => {
+          const o = {x: source.x, y: source.y};
+          return diagonal({source: o, target: o});
+        });
+
+    // Stash the old positions for transition.
+    root.eachBefore(d => {
+      d.x0 = d.x;
+      d.y0 = d.y;
+    });
+  }
+
+  update(root);
+
+  return svg.node();
+}
+
+const wrapText = function (text, width) {
+  text.each(function() {
+    var text = d3.select(this),
+        words = text.text().split(/\s+/).reverse(),
+        word,
+        line = [],
+        lineNumber = 0,
+        lineHeight = 1.1, // em
+        y = text.attr("y"),
+        dy = parseFloat(text.attr("dy")),
+        tspan = text.text(null).append("tspan").attr("x", this.getAttribute('x')).attr("y", y).attr("dy", dy + "em");
+    console.log(words)
+    while (word = words.pop()) {
+      line.push(word);
+      tspan.text(line.join(" "));
+      console.log(tspan.node().getComputedTextLength())
+      if (tspan.node().getComputedTextLength() > width) {
+        line.pop();
+        tspan.text(line.join(" "));
+        line = [word];
+        tspan = text.append("tspan")
+          .attr("x", this.getAttribute('x'))
+          .attr("y", y)
+          .attr("dy", ++lineNumber * lineHeight + dy + "em")
+          .text(word);
+      }
     }
+  });
+}
 
-    function showPopup(node) {
-        popupTitle.textContent = node.text;
-        popupInfo.textContent = node.info;
-        popupLink.href = node.link || '#'; // Handle cases where link might be undefined
-        popup.style.display = 'block';
-    }
+window.createChart = createChart;
 
-    closeBtn.addEventListener('click', () => {
-        popup.style.display = 'none';
-    });
-
-    resourcesDropdown.addEventListener('change', () => {
-        const selectedOption = resourcesDropdown.value;
-        if (selectedOption !== '#') {
-            window.open(selectedOption, '_blank');
-        }
-    });
-
-    canvas.addEventListener('click', (event) => {
-        const rect = canvas.getBoundingClientRect();
-        const x = event.clientX - rect.left;
-        const y = event.clientY - rect.top;
-        const clickedNode = nodes.find(node => Math.hypot(node.x - x, node.y - y) < 30);
-
-        if (clickedNode) {
-            showPopup(clickedNode);
-        }
-    });
-
-    // Signature Animation
-    let signaturePosition = 0;
-    setInterval(() => {
-        signature.style.transform = `translateY(${signaturePosition}px)`;
-        signaturePosition = (signaturePosition + 1) % 10; // Adjust speed and range as needed
-    }, 100); // Adjust animation speed as needed
-
-    draw();
-
-    // Responsive Canvas Resizing
-    window.addEventListener('resize', () => {
-        canvas.width = window.innerWidth * 0.9;
-        canvas.height = window.innerHeight * 2; // Adjust the height to ensure the content fits
-        draw();
-    });
-	
-	
-});
+const dachart = createChart(mindData.data);
+            document.getElementById('the-mindmap').append(dachart);

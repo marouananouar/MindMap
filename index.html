@@ -1,65 +1,661 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My MindMap Cybersecurity</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <div class="logo">
-            <h1><a href="index.html">My Mind Map</a></h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#">Mobile App</a></li>
-                <li><a href="#">3D Interior Design</a></li>
-                <li><a href="#">Soft Skills</a></li>
-                
-            </ul>
-        </nav>
-        <div class="user-info">
-            <span id="location-info">Location: Detecting...</span>
-            <span id="current-time"></span>
-            <span id="current-date"></span>
-        </div>
-    </header>
+    <head>
+        <meta charset="utf-8">
+        <title>CyberSecurity - Mind Map</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsmind@0.4.6/style/jsmind.css" integrity="sha256-bRaebMjWC2LwqX1p18fo00K/1Up8ltIu787l8MrlT/k=" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <style>
+          jmnode {
+            max-width: initial;
+          }
+          jmnode > a {
+            text-decoration: none;
+            color: white;
+          }
+          .jsmind-inner {
+              overflow: initial;
+            }
+          .mindmap {
+            margin: 10px 40px;
+          }
 
-    <h1>Learn Cybersecurity With Me From Zero to Hero</h1>
-    <canvas id="mind-map-canvas"></canvas>
-    <div id="popup" class="popup">
-        <div class="popup-content">
-            <span class="close-btn">&times;</span>
-            <h2 id="popup-title"></h2>
-            <p id="popup-info"></p>
-            <div class="resources-dropdown">
-                <label for="resources">More Resources:</label>
-                <select id="resources">
-                    <option value="#">Select a resource</option>
-                    <option value="https://www.cybrary.it/">Cybrary</option>
-                    <option value="https://www.securitytube.net/">SecurityTube</option>
-                    <option value="https://www.edx.org/course/cs50s-introduction-to-computer-science">edX - CS50</option>
-                    <option value="https://www.coursera.org/specializations/cyber-security">Coursera - Cyber Security Specialization</option>
-                </select>
-            </div>
-            <a id="popup-link" href="#" target="_blank">Learn More</a>
-        </div>
+          svg {
+            border: 1px solid #333;
+            width: 1200px;
+          }
+          a {
+            fill: #004c99;
+          }
+          a:hover {
+            fill: #09f;
+          }
+        </style>
+    </head>
+    <body>
+    <div class="alert alert-info" role="alert">
+        <p>This Mind Map To Help Us Learn Without Distraction. Click <i class="fa fa-file-text-o"></i> to view <i>More Notes</i>.  In Colors Below If U Need More Mind Maps: </p>
+        <p><small class="font-weight-light">Marouan Anouar</small></p>
+		<p>
+          <span class="badge badge-primary">&nbsp;&nbsp;</span> - 3D Interior Design
+          <span class="badge badge-success">&nbsp;&nbsp;</span> - Mobile & Gaming App
+          <span class="badge badge-warning">&nbsp;&nbsp;</span> - Soft Skills
+          <span class="badge badge-danger">&nbsp;&nbsp;</span> - Languages ES,EN
+        </p>
+        <p><small class="font-weight-light">Generated 06&#x2F;25&#x2F;2024, 11:52:28 AM</small></p>
     </div>
-    <footer>
-        <div class="social-media">
-            <a href="https://www.instagram.com/marouan_anouar" target="_blank">Instagram</a>
-            <a href="https://github.com/marouananouar" target="_blank">GitHub</a>
-            <a href="https://wa.me/0679440068" target="_blank">WhatsApp</a>
-            <a href="https://www.linkedin.com/in/marouananouar" target="_blank">LinkedIn</a>
-            <a href="https://www.tiktok.com/@marouan_anouar" target="_blank">TikTok</a>
-        </div>
-        <div class="signature">
-            <span class="animated-text">made by:</span>
-            <span class="author">Marouan Anouar</span>
-        </div>
-    </footer>
+        <div id="the-mindmap" class="mindmap"></div>
+       
+	   <!--START POPUP DESIGN 01-->
+	   
+	  <div class="modal fade" id="web" tabindex="-1" role="dialog" aria-labelledby="web" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="web">Web Technologies</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body" style="white-space: pre-wrap;">
+<h5 class="modal-title">HTML, CSS, and JavaScript:</h5>
+<b>HTML :</b> The standard markup language for creating web pages.
+<b>CSS :</b> Used for styling web pages.
+<b>JavaScript :</b> A programming language that allows you to implement complex features on web pages.</br>
+<h5 class="modal-title">Server-Side Languages:</h5>
 
-    <script src="script.js"></script>
+<b>PHP :</b> A popular server-side scripting language.
+<b>Python :</b> Often used in web frameworks like Django and Flask.
+<b>Ruby :</b> Known for the Ruby on Rails framework.
+<b>Node.js :</b> JavaScript runtime built on Chrome's V8 JavaScript engine, often used for server-side development.</br>
+<h5 class="modal-title">Databases:</h5>
+
+<b>SQL :</b> Language for managing and querying relational databases (e.g., MySQL, PostgreSQL).
+<b>NoSQL :</b> Databases like MongoDB, which are useful for handling unstructured data.</br>
+<h5 class="modal-title">Web Security:</h5>
+Understanding vulnerabilities like <mark>SQL Injection</mark>, <mark>Cross-Site Scripting (XSS)</mark>, <mark>Cross-Site Request Forgery (CSRF)</mark>, and how to mitigate them.
+Familiarity with the <mark>OWASP</mark> Top Ten list of critical web application security risks.</br>
+<h5 class="modal-title">Certifications:</h5>
+<b>Certified Web Application Defender (GWEB) :</b> Offered by GIAC, it focuses on securing web applications.
+<b>Offensive Security Web Expert (OSWE):</b> Offered by Offensive Security, this certification is advanced and focuses on web application security.</br>
+<h5 class="modal-title">Tools:</h5>
+<b>Burp Suite :</b> A comprehensive tool for web vulnerability scanning.
+<b>OWASP ZAP :</b> An open-source web application security scanner.
+<b>Nmap :</b> A network scanner useful for discovering hosts and services on a computer network.
+<b>SQLMap :</b> An open-source penetration testing tool that automates the process of detecting and exploiting SQL injection flaws.
+<b>Nikto :</b> A web server scanner which performs comprehensive tests against web servers for multiple items.
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+</div>
+
+        <!--END POPUP DESIGN 01-->
+		
+		 <!--START POPUP DESIGN 02-->
+	   
+	  <div class="modal fade" id="cs50" tabindex="-1" role="dialog" aria-labelledby="cs50" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="cs50">CS50</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body" style="white-space: pre-wrap;">
+<h5 class="modal-title">An Overview</h5>
+<p><b>CS50 is Harvard University's introductory</b> course on computer science and programming, often regarded as one of the best introductory computer science courses available online. It's designed to be rigorous but accessible to beginners, providing a solid foundation in various aspects of computer science and programming.</p></br>
+<h5 class="modal-title">Course Content:</h5>
+<b>C Programming:</b> Basics of C, memory management, pointers, arrays, and data structures.
+<b>Algorithms:</b> Searching, sorting, and algorithmic efficiency.
+<b>Data Structures:</b> Stacks, queues, linked lists, hash tables, and more.
+<b>Web Development:</b> HTML, CSS, JavaScript, and SQL.
+<b>Other Languages:</b> Introduction to Python and web frameworks like Flask.
+<b>Final Project:</b> An open-ended project that allows students to apply what they've learned to create something of their own.</br>
+<h5 class="modal-title">Resources for CS50</h5>
+
+<b>edX - Fee </b> <a href="https://www.edx.org/cs50" target="_blank"> Click Here</a>
+<b>harvard - Free</b> <a href="https://cs50.harvard.edu/x/2023/certificate/" target="_blank"> Click Here</a>
+<b>YT (AR)- Free </b> <a href="https://www.youtube.com/watch?v=pSc6RGEBLAQ&list=PLknwEmKsW8OvMsFbU9zo8oJCprAsgc4LO" target="_blank"> Click Here</a>
+<b>YT (EN)- Free </b> <a href="https://www.youtube.com/watch?v=8mAITcNt710&pp=ygULY3M1MCBjb3Vyc2U%3D" target="_blank"> Click Here</a>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+</div>
+
+        <!--END POPUP DESIGN 02-->
+		
+		
+		
+		
+	   
+	   <!--START POPUP DESIGN 03-->
+	   
+	  <div class="modal fade" id="Cryptography" tabindex="-1" role="dialog" aria-labelledby="Cryptography" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="Cryptography">Cryptography</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body" style="white-space: pre-wrap;">
+<h5 class="modal-title">Basic Concepts</h5>
+<b>Symmetric Cryptography: </b> Encryption where the same key is used for both encryption and decryption (e.g., AES).
+<b>Asymmetric Cryptography:</b> Uses a pair of keys (public and private) for encryption and decryption (e.g., RSA).
+<b>Hash Functions:</b> Functions that take an input and return a fixed-size string of bytes (e.g., SHA-256).</br>
+<h5 class="modal-title">Advanced Concepts:</h5>
+
+<b>Public Key Infrastructure (PKI):</b> Framework for managing digital certificates and public-key encryption.
+<b>Digital Signatures:</b> Used to verify the authenticity and integrity of a message, software, or digital document.
+<b>Cryptographic Protocols:</b> SSL/TLS, SSH, etc</br>
+
+<h5 class="modal-title">Certifications:</h5>
+<b>Certified Encryption Specialist (ECES):</b> Offered by EC-Council, it covers the foundations of cryptography.
+<b>GIAC Certified Forensic Analyst (GCFA):</b> While primarily a forensic certification, it includes significant cryptographic content.
+<b>Certified Information Systems Security Professional (CISSP):</b> Covers a broad range of security topics, including cryptography.</br>
+<h5 class="modal-title">Tools:</h5>
+<b>OpenSSL:</b> A robust, full-featured open-source toolkit for the TLS and SSL protocols.
+<b>GnuPG:</b> An open-source implementation of the OpenPGP standard for encrypting and signing data and communications.
+<b>Hashcat:</b>  A powerful password recovery tool that uses brute-force and other techniques to crack hashed passwords.
+<b>John the Ripper:</b> A fast password cracker, currently available for many flavors of Unix, Windows, DOS, BeOS, and OpenVMS.
+<b>Wireshark:</b>  A network protocol analyzer that can capture and interactively browse the traffic running on a computer network.
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+</div>
+
+        <!--END POPUP DESIGN 03-->
+	   
+	   
+	   
+	   
+	   
+	   
+        <div class="modal fade" id="qaNotesModal111616" tabindex="-1" role="dialog" aria-labelledby="qaNotesModalLabel111616" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="qaNotesModalLabel111616">Case 111616 - QA Downstream Notes</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body" style="white-space: pre-wrap;">This case lays the ground work for custom Matomo Events tracking. It adds event categories for Dialogs, Errors, Reporting, and Searching, and it implements event tracking for 4 search category actions (sorting columns, adding columns, removing columns, and resetting columns) in React-based tables.
+Platform QA will cover testing to ensure tracking occurs for the 4 mentioned actions on the react tables we own: Organizations on the Organizations landing page; and Contacts on the Contacts landing page, Organizations console Summary tab, and Organizations console Contacts tab. Downstream app QAers should talk to your engineers to see if you have any additional React-based tables to check.</div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="qaNotesModal110929" tabindex="-1" role="dialog" aria-labelledby="qaNotesModalLabel110929" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="qaNotesModalLabel110929">Case 110929 - QA Downstream Notes</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body" style="white-space: pre-wrap;">This case provides 2 application.conf keys for enabling Matomo analytics tracking. Tracking is disabled by default.
+When tracking is enabled in application.conf, Matomo tracking code is added to Platform pages.
+This case also defines under what circumstances Matomo will track a new page view.
+Downstream app QAers should meet with your engineers to determine if, when, and how Matomo will be implemented for your product, and what needs to be tested.
+This case is one piece of a larger project to configure and implement Matomo analytics. While it can be tested independently, it may be more efficient to test it together with other Matomo cases.</div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.12.0/d3.js" integrity="sha256-3BMRAc+yX0neFRvyfGGfd3aZK8NKwYTOzq93ubNY2iU=" crossorigin="anonymous"></script>
+        
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script>
+
+            const mindData = {
+  "meta": {
+    "name": "Matomo",
+    "version": "0.1",
+    "title": "Platform Matomo Mind-map"
+  },
+  "fogbugz": {
+    "search": "tag: MATOMO_*"
+  },
+  "format": "node_tree",
+  "data": {
+    "id": " root",
+    "topic": "CyberSecurity",
+    "children": [
+      {
+        "id": "events",
+        "topic": "Level 0 - Bug Bounty",
+        "background-color": "#1abc9c",
+        "children": [
+          {
+            "id": "reporting",
+            "topic": "CS50",
+            "background-color": "#34495e",
+            "tag": "MATOMO_REPORTS",
+            "children": [
+			  {
+            "id": "110929",
+            "background-color": "#28a745",
+            "topic": "<i title=\"View QA Downstream Notes\" data-toggle=\"modal\" data-target=\"#web\" class=\"fa fa-file-text-o\" style=\"cursor:pointer; margin-left: 5px;\"></i><a target=\"_blank\" href=\"#\">Web Technologies</a>",
+            "href": "#",
+            "data-target": "#web"
+          },
+             {
+            "id": "110929",
+            "background-color": "#28a745",
+            "topic": "<i title=\"View QA Downstream Notes\" data-toggle=\"modal\" data-target=\"#cs50\" class=\"fa fa-file-text-o\" style=\"cursor:pointer; margin-left: 5px;\"></i><a target=\"_blank\" href=\"#\">Computer Science</a>",
+            "href": "#",
+            "data-target": "#cs50"
+          },
+		  
+		    {
+            "id": "110929",
+            "background-color": "#28a745",
+            "topic": "<i title=\"View QA Downstream Notes\" data-toggle=\"modal\" data-target=\"#Cryptography\" class=\"fa fa-file-text-o\" style=\"cursor:pointer; margin-left: 5px;\"></i><a target=\"_blank\" href=\"#\">Cryptography</a>",
+            "href": "#",
+            "data-target": "#Cryptography"
+          },
+		  
+            ]
+          },
+          {
+            "id": "searching",
+            "topic": "Programming Language",
+            "background-color": "#34495e",
+            "tag": "MATOMO_SEARCHING",
+            "children": [
+              {
+            "id": "110929",
+            "background-color": "#28a745",
+            "topic": "<i title=\"View QA Downstream Notes\" data-toggle=\"modal\" data-target=\"#python\" class=\"fa fa-file-text-o\" style=\"cursor:pointer; margin-left: 5px;\"></i><a target=\"_blank\" href=\"#\">Python</a>",
+            "href": "#",
+            "data-target": "#python"
+          },
+		  {
+            "id": "110929",
+            "background-color": "#28a745",
+            "topic": "<i title=\"View QA Downstream Notes\" data-toggle=\"modal\" data-target=\"#ruby\" class=\"fa fa-file-text-o\" style=\"cursor:pointer; margin-left: 5px;\"></i><a target=\"_blank\" href=\"#\">Ruby</a>",
+            "href": "#",
+            "data-target": "#ruby"
+          },
+		  {
+            "id": "110929",
+            "background-color": "#28a745",
+            "topic": "<i title=\"View QA Downstream Notes\" data-toggle=\"modal\" data-target=\"#shell\" class=\"fa fa-file-text-o\" style=\"cursor:pointer; margin-left: 5px;\"></i><a target=\"_blank\" href=\"#\">Shell Scripting</a>",
+            "href": "#",
+            "data-target": "#shell"
+          },
+            ]
+          },
+		  
+		  {
+            "id": "searching",
+            "topic": "Operating System",
+            "background-color": "#34495e",
+            "tag": "MATOMO_SEARCHING",
+            "children": [
+              {
+            "id": "110929",
+            "background-color": "#28a745",
+            "topic": "<i title=\"View QA Downstream Notes\" data-toggle=\"modal\" data-target=\"#win\" class=\"fa fa-file-text-o\" style=\"cursor:pointer; margin-left: 5px;\"></i><a target=\"_blank\" href=\"#\">Windows</a>",
+            "href": "#",
+            "data-target": "#win"
+          },
+		  {
+            "id": "110929",
+            "background-color": "#28a745",
+            "topic": "<i title=\"View QA Downstream Notes\" data-toggle=\"modal\" data-target=\"#linux\" class=\"fa fa-file-text-o\" style=\"cursor:pointer; margin-left: 5px;\"></i><a target=\"_blank\" href=\"#\">Linux</a>",
+            "href": "#",
+            "data-target": "#linux"
+          },
+		  {
+            "id": "110929",
+            "background-color": "#28a745",
+            "topic": "<i title=\"View QA Downstream Notes\" data-toggle=\"modal\" data-target=\"#android\" class=\"fa fa-file-text-o\" style=\"cursor:pointer; margin-left: 5px;\"></i><a target=\"_blank\" href=\"#\">Android</a>",
+            "href": "#",
+            "data-target": "#android"
+          },
+            ]
+          },
+		  
+          {
+            "id": "other",
+            "topic": "Networking",
+            "background-color": "#34495e",
+            "tag": "MATOMO_EVENTS",
+            "children": [
+             {
+            "id": "110929",
+            "background-color": "#28a745",
+            "topic": "<i title=\"View QA Downstream Notes\" data-toggle=\"modal\" data-target=\"#ccna\" class=\"fa fa-file-text-o\" style=\"cursor:pointer; margin-left: 5px;\"></i><a target=\"_blank\" href=\"#\">Cisco CCNA</a>",
+            "href": "#",
+            "data-target": "#ccna"
+          },
+		  {
+            "id": "110929",
+            "background-color": "#28a745",
+            "topic": "<i title=\"View QA Downstream Notes\" data-toggle=\"modal\" data-target=\"#net+\" class=\"fa fa-file-text-o\" style=\"cursor:pointer; margin-left: 5px;\"></i><a target=\"_blank\" href=\"#\">ComptIA Network +</a>",
+            "href": "#",
+            "data-target": "#net+"
+          },
+            ]
+          },
+		  
+		  {
+            "id": "other",
+            "topic": "MSCA",
+            "background-color": "#34495e",
+            "tag": "MATOMO_EVENTS",
+            "children": [
+              {
+                "id": "111070",
+                "background-color": "#28a745",
+                "topic": "<i title=\"View QA Downstream Notes\" data-toggle=\"modal\" data-target=\"#server\" class=\"fa fa-file-text-o\" style=\"cursor:pointer; margin-left: 5px;\"></i><a target=\"_blank\" href=\"#\">Microsoft Certified Solutions Associate</a>",
+                "href": "#/",
+                "data-target": "#server"
+              }
+            ]
+          }
+		  
+	
+        ]
+      },
+	  
+	  {
+        "id": "events",
+        "topic": "Level 1 - JUNIOR PENETRATION TESTER",
+        "background-color": "#1abc9c",
+        "children": [
+          {
+            "id": "reporting",
+            "topic": "EJPT",
+            "background-color": "#34495e",
+            "tag": "MATOMO_REPORTS",
+            "children": [
+              {
+            "id": "110929",
+            "background-color": "#28a745",
+            "topic": "<i title=\"View QA Downstream Notes\" data-toggle=\"modal\" data-target=\"#ejpt\" class=\"fa fa-file-text-o\" style=\"cursor:pointer; margin-left: 5px;\"></i><a target=\"_blank\" href=\"#\">eLearnSecurity Junior Penetration Tester</a>",
+            "href": "#",
+            "data-target": "#ejpt"
+          },
+		 
+		 
+            ]
+          },
+          {
+            "id": "searching",
+            "topic": "PENTEST +",
+            "background-color": "#34495e",
+            "tag": "MATOMO_SEARCHING",
+            "children": [
+              {
+            "id": "110929",
+            "background-color": "#28a745",
+            "topic": "<i title=\"View QA Downstream Notes\" data-toggle=\"modal\" data-target=\"#pentest\" class=\"fa fa-file-text-o\" style=\"cursor:pointer; margin-left: 5px;\"></i><a target=\"_blank\" href=\"#\">ComptIA Pentest +</a>",
+            "href": "#",
+            "data-target": "#pentest"
+          },
+            ]
+          },
+		  
+		  {
+            "id": "searching",
+            "topic": "OSCP",
+            "background-color": "#34495e",
+            "tag": "MATOMO_SEARCHING",
+            "children": [
+               {
+            "id": "110929",
+            "background-color": "#28a745",
+            "topic": "<i title=\"View QA Downstream Notes\" data-toggle=\"modal\" data-target=\"#oscp\" class=\"fa fa-file-text-o\" style=\"cursor:pointer; margin-left: 5px;\"></i><a target=\"_blank\" href=\"#\">Offensive Security Certified Professional</a>",
+            "href": "#",
+            "data-target": "#oscp"
+          },
+            ]
+          },
+		  
+          
+		  
+	
+        ]
+      },
+	  
+	  {
+        "id": "events",
+        "topic": "Level 2 - PENETRATION TESTER",
+        "background-color": "#1abc9c",
+        "children": [
+          {
+            "id": "reporting",
+            "topic": "AWAE",
+            "background-color": "#34495e",
+            "tag": "MATOMO_REPORTS",
+            "children": [
+              {
+            "id": "110929",
+            "background-color": "#28a745",
+            "topic": "<i title=\"View QA Downstream Notes\" data-toggle=\"modal\" data-target=\"#awae\" class=\"fa fa-file-text-o\" style=\"cursor:pointer; margin-left: 5px;\"></i><a target=\"_blank\" href=\"#\">Advanced Web Attacks and Exploatation</a>",
+            "href": "#",
+            "data-target": "#awae"
+          },
+            ]
+          },
+          {
+            "id": "searching",
+            "topic": "OSCE",
+            "background-color": "#34495e",
+            "tag": "MATOMO_SEARCHING",
+            "children": [
+              {
+            "id": "110929",
+            "background-color": "#28a745",
+            "topic": "<i title=\"View QA Downstream Notes\" data-toggle=\"modal\" data-target=\"#osce\" class=\"fa fa-file-text-o\" style=\"cursor:pointer; margin-left: 5px;\"></i><a target=\"_blank\" href=\"#\">Offensive Security Certified Expert</a>",
+            "href": "#",
+            "data-target": "#osce"
+          },
+            ]
+          },
+		  
+		  {
+            "id": "searching",
+            "topic": "GIAC GPEN",
+            "background-color": "#34495e",
+            "tag": "MATOMO_SEARCHING",
+            "children": [
+               {
+            "id": "110929",
+            "background-color": "#28a745",
+            "topic": "<i title=\"View QA Downstream Notes\" data-toggle=\"modal\" data-target=\"#giac\" class=\"fa fa-file-text-o\" style=\"cursor:pointer; margin-left: 5px;\"></i><a target=\"_blank\" href=\"#\">Global Information Assurance Certification</a>",
+            "href": "#",
+            "data-target": "#giac"
+          },
+            ]
+          },
+		  
+          
+		  
+	
+        ]
+      },
+	  
+	  {
+        "id": "events",
+        "topic": "Level 3 - RED TEAM",
+        "background-color": "#1abc9c",
+        "children": [
+          {
+            "id": "reporting",
+            "topic": "CRTP/CRTE",
+            "background-color": "#34495e",
+            "tag": "MATOMO_REPORTS",
+            "children": [
+             {
+            "id": "110929",
+            "background-color": "#28a745",
+            "topic": "<i title=\"View QA Downstream Notes\" data-toggle=\"modal\" data-target=\"#crtp\" class=\"fa fa-file-text-o\" style=\"cursor:pointer; margin-left: 5px;\"></i><a target=\"_blank\" href=\"#\">Certified Red Team Professional</a>",
+            "href": "#",
+            "data-target": "#crtp"
+          },
+            ]
+          },
+          {
+            "id": "searching",
+            "topic": "OSEP",
+            "background-color": "#34495e",
+            "tag": "MATOMO_SEARCHING",
+            "children": [
+               {
+            "id": "110929",
+            "background-color": "#28a745",
+            "topic": "<i title=\"View QA Downstream Notes\" data-toggle=\"modal\" data-target=\"#osep\" class=\"fa fa-file-text-o\" style=\"cursor:pointer; margin-left: 5px;\"></i><a target=\"_blank\" href=\"#\">Certified Red Team Professional</a>",
+            "href": "#",
+            "data-target": "#osep"
+          },
+            ]
+          },
+		  
+		  {
+            "id": "searching",
+            "topic": "CEH",
+            "background-color": "#34495e",
+            "tag": "MATOMO_SEARCHING",
+            "children": [
+               {
+            "id": "110929",
+            "background-color": "#28a745",
+            "topic": "<i title=\"View QA Downstream Notes\" data-toggle=\"modal\" data-target=\"#ceh\" class=\"fa fa-file-text-o\" style=\"cursor:pointer; margin-left: 5px;\"></i><a target=\"_blank\" href=\"#\">Certified Ethical Hacker</a>",
+            "href": "#",
+            "data-target": "#ceh"
+          },
+            ]
+          },
+		  
+		  {
+            "id": "searching",
+            "topic": "CISSP",
+            "background-color": "#34495e",
+            "tag": "MATOMO_SEARCHING",
+            "children": [
+             {
+            "id": "110929",
+            "background-color": "#28a745",
+            "topic": "<i title=\"View QA Downstream Notes\" data-toggle=\"modal\" data-target=\"#cissp\" class=\"fa fa-file-text-o\" style=\"cursor:pointer; margin-left: 5px;\"></i><a target=\"_blank\" href=\"#\">Certified Information Systems Security Professional</a>",
+            "href": "#",
+            "data-target": "#cissp"
+          },
+            ]
+          },
+		  
+          
+		  
+	
+        ]
+      },
+	  
+	  
+      {
+        "id": "legal",
+        "topic": "CTF",
+        "background-color": "#1abc9c",
+        "tag": "MATOMO_ROLLOUT",
+        "children": [
+          
+          {
+            "id": "110929",
+            "background-color": "#28a745",
+            "topic": "<i title=\"View QA Downstream Notes\" data-toggle=\"modal\" data-target=\"#qaNotesModal110929\" class=\"fa fa-file-text-o\" style=\"cursor:pointer; margin-left: 5px;\"></i><a target=\"_blank\" href=\"https://www.hackthebox.com/hacker/ctf\">Hack The Box</a>",
+            "href": "https://www.hackthebox.com/hacker/ctf/",
+            "data-target": "#qaNotesModal110929"
+          },
+		  {
+            "id": "110929",
+            "background-color": "#28a745",
+            "topic": "<i title=\"View QA Downstream Notes\" data-toggle=\"modal\" data-target=\"#qaNotesModal110929\" class=\"fa fa-file-text-o\" style=\"cursor:pointer; margin-left: 5px;\"></i><a target=\"_blank\" href=\"https://tryhackme.com/r/room/easyctf\">Try Hack Me</a>",
+            "href": "https://tryhackme.com/r/room/easyctf",
+            "data-target": "#qaNotesModal110929"
+          },
+		  {
+            "id": "110929",
+            "background-color": "#28a745",
+            "topic": "<i title=\"View QA Downstream Notes\" data-toggle=\"modal\" data-target=\"#qaNotesModal110929\" class=\"fa fa-file-text-o\" style=\"cursor:pointer; margin-left: 5px;\"></i><a target=\"_blank\" href=\"https://overthewire.org/wargames/bandit/bandit1.html\">Over The Wire</a>",
+            "href": "https://overthewire.org/wargames/bandit/bandit1.html",
+            "data-target": "#qaNotesModal110929"
+          },
+		  {
+            "id": "110929",
+            "background-color": "#28a745",
+            "topic": "<i title=\"View QA Downstream Notes\" data-toggle=\"modal\" data-target=\"#qaNotesModal110929\" class=\"fa fa-file-text-o\" style=\"cursor:pointer; margin-left: 5px;\"></i><a target=\"_blank\" href=\"https://www.root-me.org/en/Capture-The-Flag/CTF-all-the-day/\">Root Me</a>",
+            "href": "https://www.root-me.org/en/Capture-The-Flag/CTF-all-the-day/",
+            "data-target": "#qaNotesModal110929"
+          },
+		  {
+            "id": "110929",
+            "background-color": "#28a745",
+            "topic": "<i title=\"View QA Downstream Notes\" data-toggle=\"modal\" data-target=\"#qaNotesModal110929\" class=\"fa fa-file-text-o\" style=\"cursor:pointer; margin-left: 5px;\"></i><a target=\"_blank\" href=\"https://picoctf.org\">Pico CTF</a>",
+            "href": "https://picoctf.org",
+            "data-target": "#qaNotesModal110929"
+          },
+		  {
+            "id": "110929",
+            "background-color": "#28a745",
+            "topic": "<i title=\"View QA Downstream Notes\" data-toggle=\"modal\" data-target=\"#qaNotesModal110929\" class=\"fa fa-file-text-o\" style=\"cursor:pointer; margin-left: 5px;\"></i><a target=\"_blank\" href=\"https://ctflearn.com/\">CTF learn</a>",
+            "href": "https://ctflearn.com/",
+            "data-target": "#qaNotesModal110929"
+          },
+		  {
+            "id": "110929",
+            "background-color": "#28a745",
+            "topic": "<i title=\"View QA Downstream Notes\" data-toggle=\"modal\" data-target=\"#qaNotesModal110929\" class=\"fa fa-file-text-o\" style=\"cursor:pointer; margin-left: 5px;\"></i><a target=\"_blank\" href=\"https://ctf.hacker101.com\">Hacker101 CTF</a>",
+            "href": "https://ctf.hacker101.com",
+            "data-target": "#qaNotesModal110929"
+          },
+		  {
+            "id": "110929",
+            "background-color": "#28a745",
+            "topic": "<i title=\"View QA Downstream Notes\" data-toggle=\"modal\" data-target=\"#qaNotesModal110929\" class=\"fa fa-file-text-o\" style=\"cursor:pointer; margin-left: 5px;\"></i><a target=\"_blank\" href=\"https://www.wechall.net\">WeChall</a>",
+            "href": "https://www.wechall.net",
+            "data-target": "#qaNotesModal110929"
+          },
+          {
+            "id": "110929",
+            "background-color": "#28a745",
+            "topic": "<i title=\"View QA Downstream Notes\" data-toggle=\"modal\" data-target=\"#qaNotesModal110929\" class=\"fa fa-file-text-o\" style=\"cursor:pointer; margin-left: 5px;\"></i><a target=\"_blank\" href=\"https://ctftime.org\">CTFTime</a>",
+            "href": "https://ctftime.org",
+            "data-target": "#qaNotesModal110929"
+          },
+        ]
+      }
+    ]
+  }
+};
+            //const chart = createChart(mindData.data);
+            //document.getElementById('the-mindmap').append(chart);
+        </script>
+    </body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
 </body>
 </html>
