@@ -151,26 +151,34 @@ Familiarity with the <mark>OWASP</mark> Top Ten list of critical web application
                 </button>
               </div>
               <div class="modal-body" style="white-space: pre-wrap;">
-<h5 class="modal-title">Basic Concepts</h5>
-<b>Symmetric Cryptography: </b> Encryption where the same key is used for both encryption and decryption (e.g., AES).
-<b>Asymmetric Cryptography:</b> Uses a pair of keys (public and private) for encryption and decryption (e.g., RSA).
-<b>Hash Functions:</b> Functions that take an input and return a fixed-size string of bytes (e.g., SHA-256).</br>
-<h5 class="modal-title">Advanced Concepts:</h5>
+			  <h5 class="modal-title">An Overview</h5>
+<p><b>Cryptography</b> is the study of secure communication techniques that allow for the encryption and decryption of data in such a way that only authorized parties can access the information. It plays a crucial role in ensuring data confidentiality, integrity, authentication, and non-repudiation in various applications, including secure communication over networks, digital signatures, and data protection.</p></br>
 
-<b>Public Key Infrastructure (PKI):</b> Framework for managing digital certificates and public-key encryption.
-<b>Digital Signatures:</b> Used to verify the authenticity and integrity of a message, software, or digital document.
-<b>Cryptographic Protocols:</b> SSL/TLS, SSH, etc</br>
+<h5 class="modal-title">Key Concepts:</h5>
+<b>Encryption:</b>The process of converting plaintext (readable data) into ciphertext (encrypted data) using an algorithm and a key. Only those who possess the correct key can decrypt the ciphertext back into plaintext.
+<b>Decryption:</b> The reverse process of encryption, where ciphertext is converted back into plaintext using the decryption algorithm and the correct key.
+<b>Symmetric Encryption:</b> Uses a single key for both encryption and decryption. Examples include AES (Advanced Encryption Standard) and DES (Data Encryption Standard).
+<b>Asymmetric Encryption:</b> Uses a pair of keys, a public key and a private key. Data encrypted with one key can only be decrypted with the other key in the pair. Examples include RSA (Rivest-Shamir-Adleman) and ECC (Elliptic Curve Cryptography).
+<b>Hash Functions: </b> Algorithms that convert an input (or message) into a fixed-size string of bytes, typically for use in digital signatures and data integrity verification. Examples include SHA-256 and MD5 (though MD5 is now considered insecure for cryptographic purposes).
+<b>Digital Signatures:</b> Cryptographic techniques that provide authentication, integrity, and non-repudiation of digital messages. They are created using a private key and verified using the corresponding public key.
+<b>Key Exchange:</b>Protocols and algorithms used to securely exchange cryptographic keys between parties, ensuring that intercepted keys cannot be used to compromise encrypted communications.</br>
 
 <h5 class="modal-title">Certifications:</h5>
-<b>Certified Encryption Specialist (ECES):</b> Offered by EC-Council, it covers the foundations of cryptography.
-<b>GIAC Certified Forensic Analyst (GCFA):</b> While primarily a forensic certification, it includes significant cryptographic content.
-<b>Certified Information Systems Security Professional (CISSP):</b> Covers a broad range of security topics, including cryptography.</br>
+<b>ISC² Certified Information Systems Security Professional (CISSP):</b>  Includes cryptography as one of its domains.
+<b>GIAC Certified Encryption Specialist (GCES):</b> Focuses specifically on encryption technologies and their implementation.
+<b>Certified Cryptographic Security Architect (CCSA):</b> Offered by ISACA, focuses on designing and implementing cryptographic solutions.</br>
+
+<h5 class="modal-title">Learning Resources:</h5>
+
+<b>YT (AR)- Free </b> <a href="https://www.youtube.com/watch?v=BDg7DlYSKpo&list=PLfd3S8S4nJobN_DNECuLB7TTGfELpNbfO" target="_blank"> Click Here</a>
+<b>YT (EN)- Free </b> <a href="https://www.youtube.com/watch?v=JoeiLuFNBc4&list=PLBlnK6fEyqRgJU3EsOYDTW7m6SUmW6kII" target="_blank"> Click Here</a>
+
+
+<hr class="new1">
 <h5 class="modal-title">Tools:</h5>
-<b>OpenSSL:</b> A robust, full-featured open-source toolkit for the TLS and SSL protocols.
-<b>GnuPG:</b> An open-source implementation of the OpenPGP standard for encrypting and signing data and communications.
-<b>Hashcat:</b>  A powerful password recovery tool that uses brute-force and other techniques to crack hashed passwords.
-<b>John the Ripper:</b> A fast password cracker, currently available for many flavors of Unix, Windows, DOS, BeOS, and OpenVMS.
-<b>Wireshark:</b>  A network protocol analyzer that can capture and interactively browse the traffic running on a computer network.
+<mark>OpenSSL:</mark> A versatile toolkit for managing SSL/TLS protocols and cryptography functions.
+<mark>Cryptool:</mark> A free, open-source program for applying and analyzing cryptographic algorithms.
+
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
