@@ -1,0 +1,446 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #222;
+  font-family: "Gochi Hand", sans-serif;
+  color: #333;
+}
+
+aside.context {
+  text-align: center;
+  color: #fff;
+  line-height: 1.7;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+}
+aside.context a {
+  text-decoration: none;
+  color: #fff;
+  padding: 3px 0;
+  border-bottom: 1px dashed;
+}
+aside.context a:hover {
+  border-bottom: 1px solid;
+}
+aside.context .explanation {
+  max-width: 700px;
+  margin: 4em auto 0;
+}
+
+footer {
+  text-align: center;
+  margin: 4em auto;
+  width: 100%;
+}
+footer a {
+  text-decoration: none;
+  display: inline-block;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px dashed #fff;
+  color: #fff;
+  margin: 5px;
+}
+footer a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+footer a .icons {
+  margin-top: 12px;
+  display: inline-block;
+  font-size: 20px;
+}
+
+.main-content {
+  margin: 5em auto;
+}
+
+.notebook {
+  max-width: 800px;
+  min-width: 550px;
+  min-height: 570px;
+  margin: auto;
+  border-radius: 16px;
+  background: #cc4b48;
+  padding: 2px 4px 2.5px;
+}
+.notebook__inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 16px;
+  background: linear-gradient(90deg, #fbfae8 15px, transparent 1%) center, linear-gradient(#fbfae8 15px, transparent 1%) center, #ccc;
+  background-size: 16px 16px;
+  display: grid;
+  padding: 30px 20px 25px;
+  grid-template-areas: "title expenses picture" "days expenses picture" "days expenses picture" "days goals quote" "notes tracker tracker";
+  grid-template-columns: 50% 30% 20%;
+  grid-template-rows: 18% auto auto 30% 25%;
+}
+.notebook__inner:after {
+  content: "";
+  width: 100px;
+  height: 100%;
+  top: 0;
+  margin: auto;
+  left: 0;
+  right: 0;
+  position: absolute;
+  background: linear-gradient(to right, transparent 10%, rgba(153, 153, 153, 0.05) 50%, rgba(153, 153, 153, 0.4) 51%, rgba(153, 153, 153, 0.15) 51.5%, transparent 90%);
+}
+
+.title {
+  grid-area: title;
+  text-align: center;
+}
+.title h1 {
+  font: 50px/1 "Lobster", cursive;
+  text-shadow: 2px 1px 0 #fbfae8, 5px 4px 0 coral;
+  margin: 0;
+}
+.title h3 {
+  font: 13px/1.2 "Rock Salt", cursive;
+  margin: 8px;
+}
+
+.days {
+  grid-area: days;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 15px;
+  margin-right: 22px;
+}
+.days__item {
+  border: 2px solid #111;
+  position: relative;
+}
+.days__item:nth-child(1) {
+  box-shadow: 3px 3px 0 0 rgba(208, 91, 88, 0.4);
+}
+.days__item:nth-child(2) {
+  box-shadow: 3px 3px 0 0 rgba(244, 68, 46, 0.5);
+}
+.days__item:nth-child(3) {
+  box-shadow: 3px 3px 0 0 rgba(239, 184, 186, 0.6);
+}
+.days__item:nth-child(4) {
+  box-shadow: 3px 3px 0 0 rgba(204, 75, 72, 0.7);
+}
+.days__item:nth-child(5) {
+  box-shadow: 3px 3px 0 0 rgba(231, 149, 152, 0.7);
+}
+.days__item:nth-child(6) {
+  box-shadow: 3px 3px 0 0 rgba(228, 87, 46, 0.5);
+}
+.days__day {
+  padding: 5px 5px 2px;
+  font: 14px/1.5 "Special Elite", cursive;
+  border-bottom: 2px solid #111;
+}
+.days__list {
+  padding: 8px;
+  font-size: 14px;
+  line-height: 0.9;
+}
+.days p {
+  padding-left: 8px;
+  position: relative;
+  margin: 5px 0;
+}
+.days p:after {
+  content: "-";
+  top: 0;
+  position: absolute;
+  left: 0;
+}
+.days .highlighted {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  padding: 8px;
+  left: 0;
+  text-align: center;
+}
+.days .highlighted .text {
+  margin-top: 5px;
+  position: relative;
+}
+.days .highlighted .text span {
+  position: relative;
+  z-index: 2;
+}
+.days .highlighted .text:after {
+  content: "";
+  background: rgba(239, 184, 186, 0.3);
+  width: 95%;
+  height: 100%;
+  position: absolute;
+  left: 2px;
+  top: 0;
+  z-index: 1;
+  transform: rotate(-3deg);
+}
+
+.notes {
+  grid-area: notes;
+  border: 2px solid #111;
+  border-width: 0 2px 2px;
+  margin: 35px 20px 0 0;
+  position: relative;
+}
+.notes span {
+  display: block;
+  margin: -25px 22px;
+  font: 32px "Lobster", cursive;
+  text-shadow: 2px 1px 0 #fbfae8, 5px 4px 0 coral;
+}
+.notes span:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  top: 0;
+  left: 0;
+  background: #111;
+  background: linear-gradient(to right, #111 15px, transparent 15px, transparent 95px, #111 95px);
+}
+.notes__list {
+  margin-top: 24px;
+  padding: 10px;
+  line-height: 1.2;
+}
+
+.expenses {
+  grid-area: expenses;
+  margin: 0 0 20px 20px;
+  display: grid;
+  grid-gap: 6px 10px;
+  align-items: center;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, auto);
+}
+.expenses h4 {
+  text-align: center;
+  margin: 0 0 10px;
+  font: 16px/1 "Rock Salt", cursive;
+}
+.expenses h4:first-of-type {
+  grid-column: 1/span 4;
+}
+.expenses__box {
+  border: 2px solid #111;
+  grid-column: span 2;
+  padding: 7px 7px 5px;
+}
+.expenses__title {
+  font: 4px;
+}
+.expenses__amount {
+  font: 19px "Gochi Hand", cursive;
+  display: inline-block;
+  margin-left: 10px;
+}
+.expenses .savings {
+  position: relative;
+  grid-column: 1/span 4;
+  width: 99%;
+  padding: 10px 10px 5px;
+  background: rgba(239, 184, 186, 0.4);
+  box-shadow: 3px 3px 0 0 rgba(231, 149, 152, 0.7);
+  font: 16px/1 "Rock Salt", cursive;
+}
+
+.picture {
+  grid-area: picture;
+  margin-left: 20px;
+}
+.picture__border {
+  width: 100%;
+  background: #f9f9f9;
+  padding: 20px 10px 50px;
+  height: 95%;
+  transform: rotate(5deg);
+  position: relative;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
+}
+.picture__border:after {
+  content: "";
+  width: 55%;
+  height: 20px;
+  top: -10px;
+  z-index: 5;
+  left: 25%;
+  transform: rotate(-2deg);
+  position: absolute;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  background: rgba(220, 220, 220, 0.4);
+}
+.picture__border img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.picture__border figcaption {
+  margin: 10px 0;
+  text-align: center;
+  display: block;
+  font: 14px/1 "Gochi Hand", cursive;
+  color: #f4442e;
+}
+
+.goals {
+  grid-area: goals;
+  margin: 25px 0 0 20px;
+  border: 2px solid #111;
+  border-width: 0 2px 2px;
+  position: relative;
+}
+.goals__item {
+  padding: 3px 12px;
+}
+.goals__item__checkbox {
+  border: 2px solid #111;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-right: 5px;
+  position: relative;
+}
+.goals__item__checkbox span {
+  font-size: 26px;
+  display: inline-block;
+  position: absolute;
+  top: -4px;
+  color: #db6165;
+}
+.goals__item__desc {
+  display: inline-block;
+  font: 18px "Gochi Hand", cursive;
+  vertical-align: top;
+}
+.goals > span:nth-child(1) {
+  position: absolute;
+  text-transform: uppercase;
+  font: 700 9px "Rock Salt", cursive;
+  top: -30px;
+  transform: rotate(-15deg);
+}
+.goals > span:nth-child(2) {
+  display: block;
+  margin: -25px 22px;
+  font: 32px "Lobster", cursive;
+  text-shadow: 2px 1px 0 #fbfae8, 5px 4px 0 coral;
+}
+.goals > span:nth-child(2):before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  top: 0;
+  left: 0;
+  background: #111;
+  background: linear-gradient(to right, #111 15px, transparent 15px, transparent 95px, #111 95px);
+}
+.goals__inner {
+  margin-top: 40px;
+}
+
+.music {
+  grid-area: quote;
+  margin: 25px 0 10px 20px;
+  position: relative;
+}
+.music__title {
+  font: 22px "Special Elite", cursive;
+}
+.music__artist {
+  color: #e4572e;
+  margin: 15px 0;
+  transform: rotate(-10deg);
+  max-width: 50px;
+  font: 24px/0.8 "Gochi Hand", cursive;
+}
+.music svg {
+  width: 65px;
+  position: absolute;
+  bottom: 0px;
+  right: -10px;
+}
+
+.tracker {
+  grid-area: tracker;
+  display: grid;
+  margin: 20px 0 0 20px;
+  grid-template-rows: repeat(4, 28px);
+  grid-template-columns: max-content repeat(7, 1fr);
+  align-items: center;
+  font: 18px/1 "Gochi Hand", cursive;
+  grid-auto-flow: row;
+  text-align: center;
+}
+.tracker__title {
+  grid-column: 1;
+  text-align: left;
+  padding-right: 15px;
+}
+.tracker__day {
+  text-align: center;
+}
+.tracker__day:nth-child(1) {
+  grid-column-start: 2;
+}
+.tracker__bubble {
+  border: 1.5px dashed;
+  margin: auto;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+.tracker__bubble:nth-child(10), .tracker__bubble:nth-child(12), .tracker__bubble:nth-child(13) {
+  background: rgba(244, 68, 46, 0.5);
+}
+.tracker__bubble:nth-child(17), .tracker__bubble:nth-child(18), .tracker__bubble:nth-child(19), .tracker__bubble:nth-child(22), .tracker__bubble:nth-child(23) {
+  background: rgba(239, 184, 186, 0.5);
+}
+.tracker__bubble:nth-child(27), .tracker__bubble:nth-child(29), .tracker__bubble:nth-child(30) {
+  background: rgba(255, 127, 80, 0.5);
+}
+
+/* Responsive here
+@media screen and (max-width: 768px) {
+	.main-content {
+		padding: 1em;
+	}
+	.notebook__inner {
+		grid-template-columns: 40% 25% 35%;
+		grid-template-rows: auto;
+		grid-template-areas: 
+			"title title title" 
+			"days days days" 
+			"notes notes notes" 
+			"expenses expenses expenses"
+			"goals quote picture"
+			"tracker tracker picture";
+		> div {
+			margin: 30px 20px;
+		}
+		&:after {
+			width: 100%;
+			height: 100px;
+			bottom: 0;
+			background: linear-gradient(
+				to bottom,
+				transparent 10%,
+				rgba(153, 153, 153, 0.05) 50%,
+				rgba(153, 153, 153, 0.4) 51%,
+				rgba(153, 153, 153, 0.15) 51.5%,
+				transparent 90%
+			);
+		}
+	}
+}
+*/
