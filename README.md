@@ -11,7 +11,7 @@
 
 - 💬 Ask me about Your Business **S I G M A Code -Services**
 
-- 📫 How to reach Mind Map **https://marouananouar.github.io/MindMap/**
+- 📫 How to reach Mind Map **https://bit.ly/MindMap2024**
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
