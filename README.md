@@ -1,6 +1,11 @@
 <h1 align="center">Hi 👋, I'm M A R O U A N</h1>
 <h3 align="center">This is a mind map or road map to learning that I shared with you to learn together.</h3>
-<img align="center" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhyFpckJtKbo6u_RwLooEhCPaPlcSbsISM6J_jdyyjXDw-UKshSTLCVPe2FHFwaf4xPHtfu3o47XLkl78KEyLZ6iOzvWR8FnR7CMZ6KwClD5YBBYdxum5SG6rbsOhjSr5dKsgb-1Up3qG4GIOfthVJEpE66HmTiXBmvFNENbvz8mr0JoIr6S8LvhG2sL7Rg/s600/marouan.gif" alt="Computer man" style="width:350;height:250;">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh05B0FOiWDVDw0BrXwS0LI2V0Z40R6sBUXqEUYBBgE1VFZXKDtw1YgrC9sIzjL-Tes1L2xDNfWGxue-0eP9xKIEYS96LeLrgcz5Y8Z3adblISLlBdiBqGl_592QJ6qSiAUWP4WYUyCdJIxqSZ5sPoLMsTehmbD9bvvip2ZgKuzopHJrRnw6baBbZCxiU7P/s1309/Screenshot%202024-07-17%20192339.png" alt="Computer man">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqPMpPbR5f4QOhbPjyvkkoMOLsg-1GOefqDjx6QC3zSPD3g-ePGd7FHBoF-2ZhudwJdI4fJCG0TimvnEfuHm7cB3mth-1M0UC8bGx7ta4nxVe_zxov_rtO54hBgTd2JqLSdI4AlT48NIkJZCrSWY8FndbGGktF0j0iU_BAvy6qtltYHmPR5aSP7jQ-Q2jo/s1309/Screenshot%202024-07-17%20192532.png" alt="Computer man">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiQitS_tTE4ghMCQEpllOD8pICZ7V1C5P7bwOF5ySC65tVRuG11Avscjkk80RJwkBOynbLfjAS-yeAEVwbyh7GdnC6L1cmoUCIXJH2D09LyT56egNBVW-uqayOxaqVmsehdnaQ-zn0shYy0L0NWhu8af8yIY_HUjN5MX1mrZgBPax_eNgYDvqtrRSaSILJY/s1308/Screenshot%202024-07-17%20192603.png" alt="Computer man">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiBPSNOF2NvPnFgq5He7h17LUwrThF8GqowymtWpMsYZK2C5axF3qzoDIxvi7ecFQQJqQbV7NnQU7X2DjyW8eDcUeFWPManrRogAu_fyQ0yTIy4u84fbBWfnAJM72W2_uSqVkLon1EqIJUzKpKpXyyYBFy81E1W2icyue1-o7xWRv2Wi_5LeQlyCJA710Cz/s1314/Screenshot%202024-07-17%20192635.png" alt="Computer man">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhbSrORyh-yAAzZjlabFGYdxlM1jsNHmmH6FfOmV8xwMv3uTiFOTk987c1XJDz-C34th_QiB2yJfOtQV-NxwyqKf0wZ1phyihRvRcy6XKPn4glF320M96Ek5VRss-02rk-dIkgBi5d3pQcKQoDOKe4q0m9b5SLFWnTN24CAjQijhCyHRXMhpyHqgBMrz39r/s1304/Screenshot%202024-07-17%20192702.png" alt="Computer man">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhwWK30qSrrUS-BCyV4n8mHDPlBcTlXNv70DesxIglDDkAB5n4IaFyhK2FlcnFAIyj6-yg1IJltWsbTXsslUoUcC9Gf9Od9d7ZXlqWxSIXPumTYMaW9Ds-Wy7mYbj8fthhIcRGGUbrnJ6SkZMSw7YAHvOtB0Fk0jB3RPTO08_6fSWtvy3Ge6Say7bvKZv-J/s1321/Screenshot%202024-07-17%20192739.png" alt="Computer man">
 
 - 🌱 I’m currently learning **CyberSecurity, Back-End Development, Mobile App, Architecture**
 
