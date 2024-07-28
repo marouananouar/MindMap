@@ -1,6 +1,21 @@
 @import url('https://fonts.cdnfonts.com/css/vampire-wars');
 @import url('https://fonts.cdnfonts.com/css/kuman');
 @import url('https://fonts.cdnfonts.com/css/rint-basic');
+a:hover {
+  cursor: url(https://cursor.in/assets/pointinghand.svg), auto;
+}
+i:hover {
+  cursor: url(https://cursor.in/assets/screenshotselection.svg), auto;
+}
+small:hover {
+  cursor: url(https://cursor.in/assets/closedhand.svg), auto;
+}
+span:hover {
+  cursor: url(https://cursor.in/assets/copy.svg), auto;
+}
+a.navbar-brand:hover {
+  cursor: url(https://cursor.in/assets/zoomin.svg), auto;
+}
 .roadmap {
   padding: 30px 50px;
 }
