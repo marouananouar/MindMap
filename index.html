@@ -57,12 +57,65 @@
     pointer-events: none;
     z-index: 1000;
        }
-		  
+	   
+	   /* design dyal notification */
+#myNotification {
+  display: none;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 102, 204, 0.15); /* خلفية زرقاء شفافة */
+  border-left: 4px solid #0066cc; /* بوردر أزرق غامق */
+  color: #004080; /* نص أزرق داكن */
+  padding: 12px 20px;
+  border-radius: 4px 0 0 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  box-shadow:
+    0 0 8px #0066cc,
+    0 0 20px #3399ff,
+    inset 0 0 10px #0066cc;
+  text-shadow:
+    0 0 5px #3399ff,
+    0 0 10px #66b3ff;
+  z-index: 9999;
+  white-space: nowrap;
+  animation: flicker 2.5s linear infinite;
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+    text-shadow:
+      0 0 5px #3399ff,
+      0 0 10px #66b3ff,
+      0 0 20px #3399ff;
+  }
+  20%, 22%, 24%, 55% {
+    opacity: 0.4;
+    text-shadow: none;
+  }
+}
+
+
+
+
+
         </style>
         <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="edgepro" data-description="Support Us on Buy me a coffee!" data-message="EdgePro Team" data-color="#5F7FFF" data-position="left" data-x_margin="18" data-y_margin="65"></script>
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
     </head>
     <body style="cursor: url(https://cursor.in/assets/poof.svg), auto">
+	<!--- Mega Nav Start  
+	<h1>Your Info</h1>
+  <p>Your IP: <span id="ip"></span></p>
+  <p>Country: <span id="country"></span></p>
+  <p>City: <span id="city"></span></p>
+  <p>ISP: <span id="isp"></span></p>  --->
+
+  <div id="myNotification"></div>
+
+  
 	    <!--- Mega Nav Start   --->
 <nav class="navbar navbar-light bg-light navbar-expand-lg" id="myNavbar">
  <a href="https://marouananouar.github.io/Deb/" target="_blank" class="navbar-brand" style="font-family: 'Vampire Wars';">
@@ -5194,6 +5247,23 @@ Includes basic shell scripting as part of the certification.
   </div>        
 </nav>
   </footer>
+    <script>
+    fetch('https://api.ip.sb/geoip')
+      .then(response => response.json())
+      .then(data => {
+        let notif = document.getElementById('myNotification');
+        notif.textContent = `👋 Welcome from ${data.country}! Your IP: ${data.ip}. Enjoy!`;
+        notif.style.display = 'block';
+
+        setTimeout(() => {
+          notif.style.display = 'none';
+        }, 5000);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  </script>
+
         
         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.12.0/d3.js" integrity="sha256-3BMRAc+yX0neFRvyfGGfd3aZK8NKwYTOzq93ubNY2iU=" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
